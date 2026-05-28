@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && vite build --ssr src/server/entry.ts",
+    "postbuild": "node -e \"const fs = require('fs'); if (fs.existsSync('dist/client/index.html')) fs.renameSync('dist/client/index.html', 'dist/client/template.html');\"",
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",

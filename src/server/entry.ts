@@ -117,11 +117,15 @@ if (import.meta.env.PROD) {
 	try {
 		template = readFileSync(join(clientDir, "index.html"), "utf-8");
 	} catch (err) {
-		console.error("ssr.template.load-failed", {
-			path: join(clientDir, "index.html"),
-			error: err instanceof Error ? err.message : String(err),
-		});
-		process.exit(1);
+		try {
+			template = readFileSync(join(clientDir, "template.html"), "utf-8");
+		} catch (err2) {
+			console.error("ssr.template.load-failed", {
+				path: join(clientDir, "index.html"),
+				error: err2 instanceof Error ? err2.message : String(err2),
+			});
+			process.exit(1);
+		}
 	}
 	if (!template.includes("<!--app-head-->") || !template.includes("<!--app-html-->")) {
 		// Fail fast at boot, same as a template load failure above: without
@@ -292,18 +296,20 @@ if (import.meta.env.PROD) {
 		process.exit(1);
 	}
 	const host = process.env.HOST || "0.0.0.0";
-	const server = app.listen(port, host, () => {
-		console.log(`Server listening on http://${host}:${port}`);
-	});
-	server.on("error", (err: NodeJS.ErrnoException) => {
-		console.error("ssr.server.listen-failed", {
-			port,
-			host,
-			code: err.code,
-			error: err.message,
+	if (!process.env.VERCEL) {
+		const server = app.listen(port, host, () => {
+			console.log(`Server listening on http://${host}:${port}`);
 		});
-		process.exit(1);
-	});
+		server.on("error", (err: NodeJS.ErrnoException) => {
+			console.error("ssr.server.listen-failed", {
+				port,
+				host,
+				code: err.code,
+				error: err.message,
+			});
+			process.exit(1);
+		});
+	}
 }
 
 export default app;
