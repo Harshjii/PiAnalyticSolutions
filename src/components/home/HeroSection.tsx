@@ -7,8 +7,9 @@ export default function HeroSection() {
       aria-label="Pi Analytic Solutions — hero"
       style={{
         display: 'grid',
-        gridTemplateColumns: '55fr 45fr',
+        gridTemplateColumns: '1fr',
         minHeight: 'calc(100vh - 64px)',
+        padding: '0 48px',
       }}
     >
       {/* LEFT: Text column */}
@@ -17,7 +18,6 @@ export default function HeroSection() {
           display: 'flex',
           flexDirection: 'column',
           padding: '64px 56px 64px 48px',
-          borderRight: '1px solid var(--hairline-subtle)',
         }}
         className="hero-text-col"
       >
@@ -146,71 +146,19 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* RIGHT: Image column */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.32, 0.72, 0.24, 1] }}
-        style={{
-          position: 'relative',
-          overflow: 'hidden',
-          background: 'var(--void-700)',
-          minHeight: 'calc(100vh - 64px)',
-        }}
-        className="hero-image-col"
-        role="img"
-        aria-label="Technology data visualization"
-      >
-        <img
-          src="/assets/images.png"
-          alt=""
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            display: 'block',
-            borderRadius: '0px',
-            position: 'absolute',
-            inset: 0,
-          }}
-        />
-        {/* Subtle dark overlay for depth */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%)',
-          }}
-          aria-hidden="true"
-        />
-      </motion.div>
-
       <style>{`
         @media (max-width: 900px) {
           section[aria-label="Pi Analytic Solutions — hero"] {
-            grid-template-columns: 1fr !important;
-            grid-template-rows: 56vw auto !important;
-            min-height: auto !important;
-          }
-          .hero-image-col {
-            min-height: 56vw !important;
-            height: 56vw !important;
-            order: -1 !important;
-            border-bottom: 1px solid var(--hairline-subtle) !important;
+            padding: 0 24px !important;
           }
           .hero-text-col {
-            border-right: none !important;
             padding: 48px 24px 56px !important;
           }
         }
         @media (max-width: 600px) {
           .hero-text-col { padding: 40px 20px 48px !important; }
           section[aria-label="Pi Analytic Solutions — hero"] {
-            grid-template-rows: 64vw auto !important;
-          }
-          .hero-image-col {
-            min-height: 64vw !important;
-            height: 64vw !important;
+            padding: 0 20px !important;
           }
         }
       `}</style>
