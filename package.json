@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "imports": {
-    "#airo/secrets": "./airo-secrets/src/index.ts"
+    "#airo/secrets": "./src/lib/secrets.ts"
   },
   "scripts": {
     "dev": "vite",

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { StrictMode, Suspense } from 'react';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from '@dr.pogodin/react-helmet';

@@ -18,9 +18,10 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/api/*": ["./src/server/api/*"],
-      "@/*": ["./src/*"]
-    },
+       "@/api/*": ["./src/server/api/*"],
+       "@/*": ["./src/*"],
+       "#airo/secrets": ["./src/lib/secrets.ts"]
+     },
     "baseUrl": "."
   },
   "include": ["src", "vite.config.ts", "plugins"]
