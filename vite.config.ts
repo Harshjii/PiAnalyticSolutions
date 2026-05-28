@@ -80,14 +80,15 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
 			: []),
 	],
 
-	resolve: {
-		dedupe: ["react", "react-dom", "react-router-dom"],
-		alias: {
-			nothing: "/src/fallbacks/missingModule.ts",
-			"@/api": path.resolve(__dirname, "./src/server/api"),
-			"@": path.resolve(__dirname, "./src"),
-		},
-	},
+  resolve: {
+    dedupe: ["react", "react-dom", "react-router-dom"],
+    alias: {
+      nothing: "/src/fallbacks/missingModule.ts",
+      "@/api": path.resolve(__dirname, "./src/server/api"),
+      "@": path.resolve(__dirname, "./src"),
+      "#airo/secrets": path.resolve(__dirname, "./src/lib/secrets.ts"),
+    },
+  },
 
 	optimizeDeps: {
 		include: ["react", "react-dom", "react-router-dom"],
