@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500&family=Manrope:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Kit tokens — void noir palette */
+    --void-900: #000000;
+    --void-800: #0d0d0d;
+    --void-700: #1a1a1a;
+    --screen-primary: #ffffff;
+    --screen-secondary: #d4d4d4;
+    --screen-tertiary: #8a8a8a;
+    --amber-primary: #D4A017;
+    --hairline-subtle: #2a2a2a;
+    --hairline-strong: #ffffff;
+    --ease-cinema: cubic-bezier(0.32, 0.72, 0.24, 1);
+
+    /* Shadcn color tokens */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 43 80% 46%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 53%;
+    --accent: 43 80% 46%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 43 80% 46%;
+
+    /* Typography */
+    --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: "Sora", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: "Sora", system-ui, sans-serif;
+    --font-body: "Manrope", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", monospace;
+
+    /* Kit type tokens */
+    --weight-display: 300;
+    --tracking-display: -0.02em;
+    --tracking-label: 0.12em;
+    --leading-display: 0.95;
+    --leading-body: 1.5;
+
+    /* Border Radius — zero per design spec */
+    --radius: 0px;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--void-900);
+    color: var(--screen-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Kit utility classes */
+.kit-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--screen-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kit-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber-primary);
+  flex-shrink: 0;
+}
+
+.kit-eyebrow--amber {
+  color: var(--amber-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
