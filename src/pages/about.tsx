@@ -43,6 +43,7 @@ export default function AboutPage() {
     <>
       <Helmet>
         <title>About — Pi Analytic Solutions</title>
+        <link rel="canonical" href="https://www.pianalyticsolutions.com/about" />
         <meta
           name="description"
           content="Pi Analytic Solutions is an enterprise IT consulting and software development firm based in Aligarh, India. We transform ideas into scalable technology solutions."

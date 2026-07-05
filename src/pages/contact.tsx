@@ -9,6 +9,7 @@ export default function ContactPage() {
     <>
       <Helmet>
         <title>Contact — Pi Analytic Solutions</title>
+        <link rel="canonical" href="https://www.pianalyticsolutions.com/contact" />
         <meta
           name="description"
           content="Get in touch with Pi Analytic Solutions. Visit us at B 30 Ozone City, Mahua Khera 119-Aligarh, Uttar Pradesh, India."
