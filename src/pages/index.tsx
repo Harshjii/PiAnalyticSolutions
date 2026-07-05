@@ -25,7 +25,13 @@ export default function HomePage() {
             '@context': 'https://schema.org',
             '@type': 'Organization',
             'name': 'Pi Analytic Solutions Private Limited',
-            'alternateName': ['Pi Analytic Solutions', 'Pi Analytics Solutions', 'pianalyticsolutions'],
+            'alternateName': [
+              'Pi Analytic Solutions',
+              'Pi Analytics Solutions',
+              'Pi Analytics Solution',
+              'Pi Analytic Solution',
+              'pianalyticsolutions'
+            ],
             'url': 'https://www.pianalyticsolutions.com',
             'logo': 'https://www.pianalyticsolutions.com/assets/jii.jpeg',
             'contactPoint': {
