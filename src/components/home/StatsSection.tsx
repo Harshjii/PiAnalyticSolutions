@@ -50,7 +50,7 @@ export default function StatsSection() {
   return (
     <section
       aria-label="Key achievements"
-      className="py-20 lg:py-28 px-6 md:px-12 border-t border-[var(--hairline-subtle)]"
+      className="py-14 lg:py-18 px-6 md:px-12 border-t border-[var(--hairline-subtle)]"
       style={{ background: 'var(--void-900)' }}
     >
       <div ref={ref} className="max-w-[1440px] mx-auto">

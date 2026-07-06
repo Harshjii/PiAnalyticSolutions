@@ -42,7 +42,7 @@ export default function ProcessSection() {
   return (
     <section
       aria-label="Our Process"
-      className="border-t border-[var(--hairline-subtle)] py-20 lg:py-28 px-6 md:px-12"
+      className="border-t border-[var(--hairline-subtle)] py-14 lg:py-18 px-6 md:px-12"
       style={{ background: 'var(--void-900)' }}
     >
       <div ref={ref} className="max-w-[1440px] mx-auto">

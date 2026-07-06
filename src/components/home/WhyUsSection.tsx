@@ -42,7 +42,7 @@ export default function WhyUsSection() {
   return (
     <section
       aria-label="Why choose Pi Analytic"
-      className="border-t border-[var(--hairline-strong)] py-20 lg:py-28 px-6 md:px-12"
+      className="border-t border-[var(--hairline-strong)] py-14 lg:py-18 px-6 md:px-12"
       style={{ background: 'var(--void-800)' }}
     >
       <div ref={ref} className="max-w-[1440px] mx-auto">
