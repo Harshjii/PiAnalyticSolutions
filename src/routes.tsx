@@ -2,6 +2,7 @@ import { RouteObject } from 'react-router-dom';
 import HomePage from './pages/index';
 import ContactPage from './pages/contact';
 import AboutPage from './pages/about';
+import ServicesPage from './pages/services';
 import NotFoundPage from './pages/_404';
 
 export const routes: RouteObject[] = [
@@ -18,11 +19,15 @@ export const routes: RouteObject[] = [
     element: <AboutPage />,
   },
   {
+    path: '/services',
+    element: <ServicesPage />,
+  },
+  {
     path: '*',
     element: <NotFoundPage />,
   },
 ];
 
-export type Path = '/' | '/contact' | '/about';
+export type Path = '/' | '/contact' | '/about' | '/services';
 
 export type Params = Record<string, string | undefined>;

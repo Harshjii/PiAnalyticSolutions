@@ -112,12 +112,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <a
-                href="#services"
+              <Link
+                to="/services"
                 className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
               >
                 Services
-              </a>
+              </Link>
             </li>
             <li>
               <Link
