@@ -1,388 +1,460 @@
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-
-const principles = [
-  {
-    label: 'Mission',
-    body: 'We transform complex business challenges into elegant, scalable technology solutions — delivering measurable outcomes for startups and global enterprises alike.',
-  },
-  {
-    label: 'Approach',
-    body: 'Every engagement begins with deep discovery. We map your systems, understand your constraints, and architect solutions that grow with your business — not against it.',
-  },
-  {
-    label: 'Quality',
-    body: 'We hold our work to enterprise standards regardless of project size. Rigorous testing, clean architecture, and thorough documentation are non-negotiable.',
-  },
-  {
-    label: 'Partnership',
-    body: 'We operate as an extension of your team — transparent communication, shared ownership of outcomes, and a long-term commitment to your success.',
-  },
-];
-
-const services = [
-  'Custom Software Development',
-  'AI / ML Systems',
-  'Cloud Infrastructure & DevOps',
-  'Data Engineering & Analytics',
-  'Digital Transformation Consulting',
-  'Enterprise System Integration',
-];
-
-const stats = [
-  { label: 'Projects Delivered', value: '50', unit: '+' },
-  { label: 'Client Retention', value: '95', unit: '%' },
-  { label: 'Years of Expertise', value: '8', unit: '+' },
-];
+import { useInView } from 'motion/react';
+import { useRef } from 'react';
 
 const ease = [0.32, 0.72, 0.24, 1] as const;
 
 export default function AboutPage() {
+  const storyRef = useRef<HTMLDivElement>(null);
+  const storyInView = useInView(storyRef, { once: true, margin: '-80px' });
+
+  const missionRef = useRef<HTMLDivElement>(null);
+  const missionInView = useInView(missionRef, { once: true, margin: '-80px' });
+
+  const valuesRef = useRef<HTMLDivElement>(null);
+  const valuesInView = useInView(valuesRef, { once: true, margin: '-80px' });
+
+  const approachRef = useRef<HTMLDivElement>(null);
+  const approachInView = useInView(approachRef, { once: true, margin: '-80px' });
+
+  const founderRef = useRef<HTMLDivElement>(null);
+  const founderInView = useInView(founderRef, { once: true, margin: '-80px' });
+
   return (
     <>
       <Helmet>
-        <title>About — Pi Analytic Solutions</title>
+        <title>About Us — Pi Analytic Solutions</title>
         <link rel="canonical" href="https://www.pianalyticsolutions.com/about" />
         <meta
           name="description"
-          content="Pi Analytic Solutions is an enterprise IT consulting and software development firm based in Aligarh, India. We transform ideas into scalable technology solutions."
+          content="Founded in 2025, Pi Analytic Solutions delivers innovative technology solutions that help businesses grow, simplify operations, and achieve digital transformation."
         />
-        <meta property="og:title" content="About — Pi Analytic Solutions" />
-        <meta
-          property="og:description"
-          content="Enterprise software, AI/ML, cloud infrastructure, and digital transformation — delivered with precision."
-        />
-        <meta property="og:type" content="website" />
       </Helmet>
 
-      <main id="main-content">
-
-        {/* ── PAGE INTRO ── */}
-        <section className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 pt-12 md:pt-20" aria-label="About Pi Analytic Solutions">
-
-          {/* Opening rule */}
-          <div className="w-full h-px bg-[var(--hairline-strong)] mb-8" role="presentation" />
-
-          {/* Eyebrow row */}
-          <div className="flex items-center justify-between pb-8 border-b border-[var(--hairline-subtle)]">
-            <p className="flex items-center gap-2.5 text-[11px] font-medium tracking-widest uppercase text-[var(--amber-primary)]">
-              <span className="inline-block w-5 h-px bg-[var(--amber-primary)] shrink-0" />
-              About Us
-            </p>
-            <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-              Est. 2025
-            </span>
-          </div>
-
-          {/* Mission + Principles grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr]">
-
-            {/* Mission */}
-            <motion.div
-              className="flex flex-col pt-10 pb-10 lg:pb-20 lg:pr-12 border-b border-[var(--hairline-subtle)] lg:border-b-0 lg:border-r lg:border-[var(--hairline-subtle)]"
+      {/* Main Container - retaining the brand's dark theme layout */}
+      <div 
+        style={{ background: 'var(--void-900)', color: 'var(--screen-primary)', fontFamily: 'Poppins, sans-serif' }}
+        className="min-h-screen selection:bg-[var(--amber-primary)] selection:text-black"
+      >
+        
+        {/* 1. HERO SECTION */}
+        <section 
+          className="relative min-h-[60vh] flex items-center justify-center px-6 md:px-12 py-20 text-center bg-cover bg-center overflow-hidden"
+          style={{ backgroundImage: "url('/assets/about_hero.png')" }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-[#000000]/75 z-0" />
+          
+          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+            <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease }}
+              className="text-[var(--amber-primary)] text-xs font-semibold uppercase tracking-widest mb-4"
             >
-              <h1 className="font-[var(--font-display)] text-[clamp(28px,5vw,56px)] font-light tracking-tight leading-[0.95] text-[var(--screen-primary)] mb-8 max-w-[16ch]">
-                Precision engineering for ambitious ideas
-              </h1>
-              <p className="font-[var(--font-body)] text-base leading-relaxed text-[var(--screen-secondary)] max-w-[52ch] mb-5">
-                Pi Analytic Solutions is a technology consulting and software development firm headquartered in Aligarh, Uttar Pradesh. We partner with founders, product teams, and enterprise leaders to build systems that scale.
-              </p>
-              <p className="font-[var(--font-body)] text-base leading-relaxed text-[var(--screen-secondary)] max-w-[52ch]">
-                From AI-powered analytics to cloud-native infrastructure, we bring deep technical expertise and a commitment to outcomes that matter.
-              </p>
-            </motion.div>
-
-            {/* Principles */}
+              Who We Are
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease }}
+              className="text-white font-bold leading-tight mb-6"
+              style={{ fontSize: 'clamp(32px, 6vw, 48px)' }}
+            >
+              About Pi Analytic Solutions
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease }}
+              className="text-gray-300 font-normal mb-8 max-w-2xl leading-relaxed"
+              style={{ fontSize: 'clamp(16px, 3vw, 20px)' }}
+            >
+              Delivering innovative technology solutions that help businesses grow, simplify operations, and achieve digital transformation.
+            </motion.p>
             <motion.div
-              className="pt-10 pb-10 lg:pb-20 lg:pl-12"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.15, ease }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3, ease }}
             >
-              <p className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)] mb-6 pb-4 border-b border-[var(--hairline-subtle)]">
-                How we work
-              </p>
-              <ul className="list-none m-0 p-0">
-                {principles.map((p, i) => (
-                  <motion.li
-                    key={p.label}
-                    className={`grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6 sm:gap-x-8 py-6 ${i < principles.length - 1 ? 'border-b border-[var(--hairline-subtle)]' : ''}`}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.2 + i * 0.07, ease }}
-                  >
-                    <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--amber-primary)] pt-0.5 self-start">
-                      {p.label}
-                    </span>
-                    <p className="font-[var(--font-body)] text-[15px] leading-relaxed text-[var(--screen-secondary)]">
-                      {p.body}
-                    </p>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ── BRAND IDENTITY STRIP ── */}
-        <div className="border-t border-b border-[var(--hairline-strong)] bg-[var(--void-800)]">
-          <div className="flex flex-wrap items-stretch">
-
-            {/* Logo */}
-            <div className="flex items-center justify-center px-8 sm:px-12 py-6 border-b border-r border-[var(--hairline-subtle)]">
-              <img
-                src="/assets/jii.jpeg"
-                alt="Pi Analytic Solutions"
-                className="h-10 w-auto object-contain shrink-0"
-              />
-            </div>
-
-            {/* Wordmark */}
-            <div className="flex flex-col items-start justify-center gap-1.5 px-6 sm:px-10 py-6 border-b border-r border-[var(--hairline-subtle)] flex-1 min-w-[180px]">
-              <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-                Full Name
-              </span>
-              <span className="font-[var(--font-display)] text-[clamp(18px,3vw,48px)] font-light tracking-tight leading-none text-[var(--screen-primary)]">
-                Pi Analytic Solutions
-              </span>
-            </div>
-
-            {/* Incorporated */}
-            <div className="flex flex-col items-start justify-center gap-2 px-6 sm:px-10 py-6 border-b border-r border-[var(--hairline-subtle)]">
-              <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-                Incorporated
-              </span>
-              <span className="font-[var(--font-display)] text-[clamp(18px,2.5vw,36px)] font-light tracking-tight leading-none text-[var(--screen-secondary)]">
-                2025
-              </span>
-            </div>
-
-            {/* CIN */}
-            <div className="flex flex-col items-start justify-center gap-1.5 px-6 sm:px-10 py-6 border-b border-[var(--hairline-subtle)]">
-              <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-                CIN
-              </span>
-              <span className="font-[var(--font-body)] text-[12px] sm:text-[13px] font-medium tracking-[0.04em] text-[var(--screen-secondary)] break-all">
-                U62090UP2025PTC234247
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* ── STATS LEDGER ── */}
-        <section className="bg-[var(--void-900)] border-b border-[var(--hairline-subtle)]" aria-label="Key figures">
-          <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12">
-
-            {/* Headline */}
-            <div className="py-12 md:py-16 border-b border-[var(--hairline-subtle)]">
-              <p className="flex items-center gap-2.5 text-[11px] font-medium tracking-widest uppercase text-[var(--amber-primary)] mb-5">
-                <span className="inline-block w-5 h-px bg-[var(--amber-primary)] shrink-0" />
-                By the numbers
-              </p>
-              <h2 className="font-[var(--font-display)] text-[clamp(24px,4vw,64px)] font-light tracking-tight leading-[1.05] text-[var(--screen-primary)] max-w-[22ch]">
-                Delivering results that speak for themselves
-              </h2>
-            </div>
-
-            {/* Stat rows */}
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                className={`flex items-start justify-between py-6 md:py-8 ${i < stats.length - 1 ? 'border-b border-[var(--hairline-subtle)]' : ''}`}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08, ease }}
-              >
-                <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)] max-w-[120px] sm:max-w-[160px] pt-2 shrink-0">
-                  {stat.label}
-                </span>
-                <div
-                  className="flex items-baseline shrink-0 whitespace-nowrap self-start"
-                  style={{ gap: '0.08em' }}
-                  aria-label={`${stat.label}: ${stat.value}${stat.unit}`}
-                >
-                  <span className="font-[var(--font-display)] text-[clamp(48px,10vw,144px)] font-light tracking-tight leading-[0.95] text-[var(--screen-primary)]">
-                    {stat.value}
-                  </span>
-                  <span className="font-[var(--font-display)] text-[clamp(36px,7vw,112px)] font-light tracking-tight leading-[0.95] text-[var(--screen-secondary)]">
-                    {stat.unit}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── SERVICES LEDGER ── */}
-        <section className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12" aria-label="Our capabilities">
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] py-16 md:py-24">
-
-            {/* Left: headline */}
-            <div className="lg:pr-12 pb-12 lg:pb-0">
-              <p className="flex items-center gap-2.5 text-[11px] font-medium tracking-widest uppercase text-[var(--amber-primary)] mb-6">
-                <span className="inline-block w-5 h-px bg-[var(--amber-primary)] shrink-0" />
-                What we do
-              </p>
-              <h2 className="font-[var(--font-display)] text-[clamp(28px,4.5vw,72px)] font-light tracking-tight leading-[0.95] text-[var(--screen-primary)] mb-8">
-                End-to-end technology capabilities
-              </h2>
-              <p className="font-[var(--font-body)] text-base leading-relaxed text-[var(--screen-secondary)] max-w-[48ch] mb-8">
-                From initial architecture to production deployment, we cover the full technology stack — so you work with one trusted partner, not a fragmented vendor ecosystem.
-              </p>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 text-[11px] font-medium tracking-widest uppercase no-underline text-[var(--screen-secondary)] border-b border-[var(--hairline-subtle)] pb-0.5 transition-colors duration-200 hover:text-[var(--amber-primary)] hover:border-[var(--amber-primary)]"
+                className="font-btn-text inline-flex items-center justify-center bg-[var(--amber-primary)] text-[var(--void-900)] px-8 py-4 border border-[var(--amber-primary)] transition-all duration-300 hover:bg-transparent hover:text-white hover:border-white rounded-none"
               >
-                Start a project →
+                Get in Touch
               </Link>
-            </div>
-
-            {/* Right: service list */}
-            <div className="border-t border-[var(--hairline-strong)] lg:border-t-0 lg:border-l lg:border-[var(--hairline-subtle)] pt-0 lg:pt-[clamp(80px,10vw,160px)]">
-              <ul className="list-none m-0 p-0 border-t border-[var(--hairline-subtle)] w-full">
-                {services.map((service, i) => (
-                  <motion.li
-                    key={service}
-                    initial={{ opacity: 0, x: 8 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.06, ease }}
-                  >
-                    <Link
-                      to="/contact"
-                      className="group flex items-center justify-between gap-6 px-5 sm:px-10 py-5 sm:py-6 border-b border-[var(--hairline-subtle)] no-underline text-inherit transition-colors duration-200 hover:bg-[var(--void-800)]"
-                    >
-                      <span className="font-[var(--font-display)] text-[clamp(15px,2vw,28px)] font-light tracking-tight leading-[1.1] text-[var(--screen-secondary)] transition-colors duration-200 group-hover:text-[var(--screen-primary)]">
-                        {service}
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className="text-lg leading-none text-[var(--screen-tertiary)] shrink-0 transition-all duration-200 group-hover:text-[var(--amber-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 inline-block"
-                      >
-                        ↗
-                      </span>
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* ── CEO / LEADERSHIP SECTION ── */}
-        <section
-          className="border-t border-[var(--hairline-strong)] bg-[var(--void-800)]"
-          aria-label="Leadership"
+        {/* 2. OUR STORY SECTION */}
+        <section 
+          id="story"
+          className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto"
         >
-          {/* Section header row */}
-          <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 pt-10 pb-6 flex items-center justify-between border-b border-[var(--hairline-subtle)]">
-            <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-              Leadership
-            </span>
-            <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-              Founder &amp; CEO
-            </span>
-          </div>
-
-          {/* Full-width bio column */}
-          <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12">
+          <div ref={storyRef} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Copy */}
             <motion.div
-              className="flex flex-col gap-6 py-10 lg:py-14 max-w-[860px]"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={storyInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, ease }}
+              className="lg:col-span-7"
             >
-              {/* Eyebrow */}
-              <p className="flex items-center gap-2.5 text-[11px] font-medium tracking-widest uppercase text-[var(--amber-primary)]">
-                <span className="inline-block w-5 h-px bg-[var(--amber-primary)] shrink-0" />
-                Founder &amp; CEO
-              </p>
-
-              {/* Name at display scale */}
-              <h2 className="font-[var(--font-display)] text-[clamp(32px,4vw,64px)] font-light tracking-tight leading-[0.95] text-[var(--screen-primary)]">
-                Ajay Agrawal
-              </h2>
-
-              {/* Credential strip */}
-              <div className="flex flex-wrap gap-x-8 gap-y-2 pb-6 border-b border-[var(--hairline-subtle)]">
-                {['M.Tech Mechanical Engineer', '35+ Years Experience', 'Educator & Innovator'].map((tag) => (
-                  <span key={tag} className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Bio paragraphs */}
-              <p className="font-[var(--font-body)] text-[15px] leading-relaxed text-[var(--screen-secondary)]">
-                With a distinguished career spanning over 35 years, Ajay Agrawal brings together deep technical expertise, academic excellence, and a passion for innovation. An accomplished M.Tech Mechanical Engineer, he began his professional journey in the railway manufacturing sector — contributing to the design and development of railway coaches with a strong focus on engineering precision, quality, and operational efficiency.
-              </p>
-              <p className="font-[var(--font-body)] text-[15px] leading-relaxed text-[var(--screen-secondary)]">
-                Driven by a commitment to knowledge sharing and talent development, he transitioned into academia and served as a respected educator across various engineering colleges for more than two decades. Throughout his teaching career, he mentored countless aspiring engineers — combining practical industry exposure with strong theoretical foundations to shape future professionals.
-              </p>
-              <p className="font-[var(--font-body)] text-[15px] leading-relaxed text-[var(--screen-secondary)]">
-                Today, as the founder and leader of Pi Analytic Solutions, he leverages his extensive engineering background, analytical mindset, and leadership experience to deliver innovative, data-driven solutions for modern business challenges. His vision is rooted in bridging technology, analytics, and real-world problem-solving to help organisations achieve sustainable growth and operational excellence.
-              </p>
-              <p className="font-[var(--font-body)] text-[15px] leading-relaxed text-[var(--screen-secondary)]">
-                Under his leadership, the company continues to foster a culture of innovation, integrity, and continuous learning — empowering clients with intelligent solutions tailored to an evolving digital landscape.
-              </p>
-
-              {/* Key facts — horizontal ledger */}
-              <div className="flex flex-wrap gap-0 border-t border-[var(--hairline-subtle)] mt-2">
-                {[
-                  { label: 'Experience', value: '35+ years' },
-                  { label: 'Background', value: 'Engineering & Academia' },
-                  { label: 'Speciality', value: 'Data-driven solutions' },
-                ].map((fact, i) => (
-                  <div
-                    key={fact.label}
-                    className={`flex flex-col gap-1.5 py-5 pr-10 ${i > 0 ? 'pl-10 border-l border-[var(--hairline-subtle)]' : ''}`}
-                  >
-                    <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-                      {fact.label}
-                    </span>
-                    <span className="text-[13px] font-medium tracking-wide uppercase text-[var(--screen-secondary)]">
-                      {fact.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Contact link */}
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 text-[11px] font-medium tracking-widest uppercase no-underline text-[var(--screen-secondary)] border-b border-[var(--hairline-subtle)] pb-0.5 self-start transition-colors duration-200 hover:text-[var(--amber-primary)] hover:border-[var(--amber-primary)]"
+              <span className="text-[var(--amber-primary)] text-xs font-semibold uppercase tracking-widest block mb-4">Our History</span>
+              <h2 
+                className="font-bold text-white mb-6 animate-pulse-slow"
+                style={{ fontSize: '38px' }}
               >
-                Work with us →
-              </Link>
+                Our Story
+              </h2>
+              <div className="border-t-2 border-[var(--amber-primary)] w-16 mb-6" />
+              <p className="mb-6 leading-relaxed text-[var(--screen-secondary)]" style={{ fontSize: '18px' }}>
+                Founded in 2025, Pi Analytic Solutions was established with a vision to make technology simple, practical, and accessible for businesses. We help startups, enterprises, government organizations, and international clients solve real business challenges through smart digital solutions.
+              </p>
+              <p className="leading-relaxed text-[var(--screen-secondary)]" style={{ fontSize: '18px' }}>
+                Our goal is to deliver reliable, secure, and scalable technology that improves efficiency, supports business growth, and creates long-term value.
+              </p>
+            </motion.div>
+
+            {/* Right Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={storyInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15, ease }}
+              className="lg:col-span-5 h-[350px] lg:h-[450px] relative overflow-hidden border border-[var(--hairline-subtle)]"
+            >
+              <img
+                src="/assets/about_story.png"
+                alt="Pi Analytic Solutions brainstorming team discussion"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           </div>
         </section>
 
-        {/* ── CLOSING CTA ── */}
-        <div className="border-t border-[var(--hairline-strong)] max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 py-14 md:py-20 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-10">
-          <div className="flex flex-col gap-3 flex-1">
-            <span className="text-[11px] font-medium tracking-widest uppercase text-[var(--screen-tertiary)]">
-              Ready to build
-            </span>
-            <h2 className="font-[var(--font-display)] text-[clamp(24px,3.5vw,56px)] font-light tracking-tight leading-[0.95] text-[var(--screen-primary)] max-w-[18ch]">
-              Let's turn your vision into reality
-            </h2>
-          </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2.5 text-[11px] font-medium tracking-widest uppercase no-underline bg-[var(--amber-primary)] text-[var(--void-900)] border border-[var(--amber-primary)] px-8 py-3.5 shrink-0 self-start sm:self-end transition-opacity duration-200 hover:opacity-85 whitespace-nowrap"
-          >
-            Get in touch →
-          </Link>
-        </div>
+        {/* 3. OUR MISSION & VISION SECTION (Light/Alternative Dark Section) */}
+        <section 
+          className="py-20 px-6 md:px-12"
+          style={{ background: 'var(--void-800)' }}
+        >
+          <div ref={missionRef} className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Mission Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={missionInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease }}
+              className="bg-[var(--void-900)] p-8 md:p-10 border border-[var(--hairline-subtle)] flex flex-col items-start hover:border-[var(--amber-primary)] transition-all duration-300"
+            >
+              <div className="text-4xl mb-6 bg-[var(--void-800)] w-16 h-16 flex items-center justify-center border border-[var(--hairline-subtle)]">🎯</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Mission</h3>
+              <p className="text-[var(--screen-secondary)] leading-relaxed" style={{ fontSize: '18px' }}>
+                To simplify business challenges through innovative, secure, and scalable technology solutions while building long-term relationships based on trust, quality, and innovation.
+              </p>
+            </motion.div>
 
-      </main>
+            {/* Vision Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={missionInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15, ease }}
+              className="bg-[var(--void-900)] p-8 md:p-10 border border-[var(--hairline-subtle)] flex flex-col items-start hover:border-[var(--amber-primary)] transition-all duration-300"
+            >
+              <div className="text-4xl mb-6 bg-[var(--void-800)] w-16 h-16 flex items-center justify-center border border-[var(--hairline-subtle)]">👁️</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Vision</h3>
+              <p className="text-[var(--screen-secondary)] leading-relaxed" style={{ fontSize: '18px' }}>
+                To become a trusted technology partner by delivering future-ready digital solutions that empower businesses and create lasting impact.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 4. OUR CORE VALUES SECTION */}
+        <section 
+          className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto"
+        >
+          <div ref={valuesRef} className="flex flex-col">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease }}
+              className="mb-12"
+            >
+              <span className="text-[var(--amber-primary)] text-xs font-semibold uppercase tracking-widest block mb-4">Our Principles</span>
+              <h2 className="font-bold text-white mb-2" style={{ fontSize: '38px' }}>
+                Our Core Values
+              </h2>
+              <div className="border-t-2 border-[var(--amber-primary)] w-16 mt-4" />
+            </motion.div>
+
+            {/* Values Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Innovation */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1, ease }}
+                className="bg-[var(--void-800)] p-8 border border-[var(--hairline-subtle)] hover:border-[var(--amber-primary)] transition-all duration-300"
+              >
+                <div className="text-3xl mb-4">💡</div>
+                <h3 className="text-xl font-bold text-white mb-3">Innovation</h3>
+                <p className="text-[var(--screen-secondary)] leading-relaxed" style={{ fontSize: '18px' }}>
+                  We continuously adopt modern technologies to build smarter and future-ready solutions.
+                </p>
+              </motion.div>
+
+              {/* Integrity */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2, ease }}
+                className="bg-[var(--void-800)] p-8 border border-[var(--hairline-subtle)] hover:border-[var(--amber-primary)] transition-all duration-300"
+              >
+                <div className="text-3xl mb-4">🤝</div>
+                <h3 className="text-xl font-bold text-white mb-3">Integrity</h3>
+                <p className="text-[var(--screen-secondary)] leading-relaxed" style={{ fontSize: '18px' }}>
+                  We believe in honesty, transparency, and building strong client relationships.
+                </p>
+              </motion.div>
+
+              {/* Excellence */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3, ease }}
+                className="bg-[var(--void-800)] p-8 border border-[var(--hairline-subtle)] hover:border-[var(--amber-primary)] transition-all duration-300"
+              >
+                <div className="text-3xl mb-4">⭐</div>
+                <h3 className="text-xl font-bold text-white mb-3">Excellence</h3>
+                <p className="text-[var(--screen-secondary)] leading-relaxed" style={{ fontSize: '18px' }}>
+                  We focus on delivering high-quality solutions with attention to every detail.
+                </p>
+              </motion.div>
+
+              {/* Customer Success */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.4, ease }}
+                className="bg-[var(--void-800)] p-8 border border-[var(--hairline-subtle)] hover:border-[var(--amber-primary)] transition-all duration-300"
+              >
+                <div className="text-3xl mb-4">🚀</div>
+                <h3 className="text-xl font-bold text-white mb-3">Customer Success</h3>
+                <p className="text-[var(--screen-secondary)] leading-relaxed" style={{ fontSize: '18px' }}>
+                  Our clients' success is our biggest achievement. Every solution we build is designed to create real business value.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. OUR WORKING APPROACH SECTION (Light/Alternative Dark Section) */}
+        <section 
+          className="py-20 px-6 md:px-12"
+          style={{ background: 'var(--void-800)' }}
+        >
+          <div ref={approachRef} className="max-w-[1440px] mx-auto">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={approachInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease }}
+              className="mb-16 text-center"
+            >
+              <span className="text-[var(--amber-primary)] text-xs font-semibold uppercase tracking-widest block mb-4">Workflow</span>
+              <h2 className="font-bold text-white mb-2" style={{ fontSize: '38px' }}>
+                How We Work
+              </h2>
+              <div className="border-t-2 border-[var(--amber-primary)] w-16 mx-auto mt-4" />
+            </motion.div>
+
+            {/* Timeline steps */}
+            <div className="relative border-l-2 border-[var(--amber-primary)]/30 ml-4 md:ml-12 pl-8 md:pl-12 flex flex-col gap-12">
+              {/* Step 1 */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={approachInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1, ease }}
+                className="relative"
+              >
+                <div className="absolute -left-[42px] md:-left-[58px] top-1 bg-[var(--void-900)] text-[var(--amber-primary)] border-2 border-[var(--amber-primary)] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm shadow">
+                  1
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">🔍 Understand Requirements</h3>
+                <p className="text-[var(--screen-secondary)] max-w-3xl" style={{ fontSize: '18px' }}>
+                  We listen carefully to understand your business goals and challenges.
+                </p>
+              </motion.div>
+
+              {/* Step 2 */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={approachInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2, ease }}
+                className="relative"
+              >
+                <div className="absolute -left-[42px] md:-left-[58px] top-1 bg-[var(--void-900)] text-[var(--amber-primary)] border-2 border-[var(--amber-primary)] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm shadow">
+                  2
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">📋 Planning & Strategy</h3>
+                <p className="text-[var(--screen-secondary)] max-w-3xl" style={{ fontSize: '18px' }}>
+                  We create a clear roadmap for successful project execution.
+                </p>
+              </motion.div>
+
+              {/* Step 3 */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={approachInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3, ease }}
+                className="relative"
+              >
+                <div className="absolute -left-[42px] md:-left-[58px] top-1 bg-[var(--void-900)] text-[var(--amber-primary)] border-2 border-[var(--amber-primary)] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm shadow">
+                  3
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">💻 Design & Development</h3>
+                <p className="text-[var(--screen-secondary)] max-w-3xl" style={{ fontSize: '18px' }}>
+                  Our team develops secure, scalable, and user-friendly digital solutions.
+                </p>
+              </motion.div>
+
+              {/* Step 4 */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={approachInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.4, ease }}
+                className="relative"
+              >
+                <div className="absolute -left-[42px] md:-left-[58px] top-1 bg-[var(--void-900)] text-[var(--amber-primary)] border-2 border-[var(--amber-primary)] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm shadow">
+                  4
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">✅ Testing & Quality Assurance</h3>
+                <p className="text-[var(--screen-secondary)] max-w-3xl" style={{ fontSize: '18px' }}>
+                  Every project is tested thoroughly for performance, security, and reliability.
+                </p>
+              </motion.div>
+
+              {/* Step 5 */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={approachInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.5, ease }}
+                className="relative"
+              >
+                <div className="absolute -left-[42px] md:-left-[58px] top-1 bg-[var(--void-900)] text-[var(--amber-primary)] border-2 border-[var(--amber-primary)] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm shadow">
+                  5
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">🚀 Deployment</h3>
+                <p className="text-[var(--screen-secondary)] max-w-3xl" style={{ fontSize: '18px' }}>
+                  We launch your solution smoothly with complete support.
+                </p>
+              </motion.div>
+
+              {/* Step 6 */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={approachInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.6, ease }}
+                className="relative"
+              >
+                <div className="absolute -left-[42px] md:-left-[58px] top-1 bg-[var(--void-900)] text-[var(--amber-primary)] border-2 border-[var(--amber-primary)] w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-sm shadow">
+                  6
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">🤝 Support & Maintenance</h3>
+                <p className="text-[var(--screen-secondary)] max-w-3xl" style={{ fontSize: '18px' }}>
+                  We provide continuous updates and technical assistance whenever needed.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. FOUNDER & CEO SECTION */}
+        <section 
+          className="py-20 px-6 md:px-12 max-w-[1440px] mx-auto"
+        >
+          <div ref={founderRef} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Circular Portrait */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={founderInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, ease }}
+              className="lg:col-span-5 flex justify-center"
+            >
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-xl border-4 border-[var(--void-800)] ring-4 ring-[var(--amber-primary)]/20 group">
+                <img
+                  src="/assets/ajay_agrawal.png"
+                  alt="Ajay Agrawal portrait, Founder & CEO of Pi Analytic Solutions"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </motion.div>
+
+            {/* Right Bio */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={founderInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15, ease }}
+              className="lg:col-span-7"
+            >
+              <span className="text-[var(--amber-primary)] text-xs font-semibold uppercase tracking-widest block mb-4">Leadership</span>
+              <h2 className="font-bold text-white mb-6" style={{ fontSize: '38px' }}>
+                Founder & CEO
+              </h2>
+              <div className="border-t-2 border-[var(--amber-primary)] w-16 mb-6" />
+              <h3 className="text-2xl font-bold text-white mb-4">Ajay Agrawal</h3>
+              <p className="mb-6 leading-relaxed text-[var(--screen-secondary)]" style={{ fontSize: '18px' }}>
+                Ajay Agrawal is an M.Tech Mechanical Engineer with over 35 years of leadership experience in engineering and education. His vision is to combine technology, innovation, and practical business solutions to help organizations grow and succeed.
+              </p>
+              <p className="leading-relaxed text-[var(--screen-secondary)]" style={{ fontSize: '18px' }}>
+                Under his leadership, Pi Analytic Solutions is committed to delivering reliable, high-quality, and future-ready digital solutions while maintaining the highest standards of professionalism and customer satisfaction.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 7. LET'S BUILD SOMETHING GREAT TOGETHER (Final CTA) */}
+        <section 
+          className="relative py-20 px-6 md:px-12 text-center bg-cover bg-center overflow-hidden border-t border-[var(--hairline-subtle)]"
+          style={{ backgroundImage: "url('/assets/about_cta.png')" }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-[#000000]/80 z-0" />
+
+          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+            <h2
+              className="font-bold text-white mb-6 leading-tight"
+              style={{ fontSize: 'clamp(28px, 5vw, 40px)' }}
+            >
+              Let's Turn Your Ideas into Reality
+            </h2>
+            <p
+              className="text-gray-300 font-normal mb-8 max-w-2xl leading-relaxed"
+              style={{ fontSize: '18px' }}
+            >
+              Whether you're a startup, an established business, or a government organization, Pi Analytic Solutions is ready to help you build innovative digital solutions that support your growth and success.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                to="/contact"
+                className="font-btn-text inline-flex items-center justify-center bg-[var(--amber-primary)] text-[var(--void-900)] px-6 py-3.5 border border-[var(--amber-primary)] transition-all duration-300 hover:bg-transparent hover:text-white hover:border-white rounded-none"
+              >
+                Contact Us
+              </Link>
+              <Link
+                to="/contact"
+                className="font-btn-text inline-flex items-center justify-center bg-transparent text-white px-6 py-3.5 border border-white transition-all duration-300 hover:bg-[var(--amber-primary)] hover:text-[var(--void-900)] hover:border-[var(--amber-primary)] rounded-none"
+              >
+                Book a Free Consultation
+              </Link>
+            </div>
+          </div>
+        </section>
+
+      </div>
     </>
   );
 }
