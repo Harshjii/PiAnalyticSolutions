@@ -121,6 +121,14 @@ export default function Footer() {
             </li>
             <li>
               <Link
+                to="/solutions"
+                className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
+              >
+                Solutions
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/contact"
                 className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
               >
