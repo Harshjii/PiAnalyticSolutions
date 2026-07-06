@@ -1,23 +1,26 @@
 import { Helmet } from '@dr.pogodin/react-helmet';
 import HeroSection from '@/components/home/HeroSection';
+import AboutSection from '@/components/home/AboutSection';
 import ServicesSection from '@/components/home/ServicesSection';
-import StatsSection from '@/components/home/StatsSection';
 import WhyUsSection from '@/components/home/WhyUsSection';
+import ProcessSection from '@/components/home/ProcessSection';
+import TrustedBySection from '@/components/home/TrustedBySection';
+import StatsSection from '@/components/home/StatsSection';
 
 export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Pi Analytic Solutions | Enterprise IT & Software Dev</title>
+        <title>Pi Analytic Solutions | Transforming Ideas into Smart Digital Solutions</title>
         <link rel="canonical" href="https://www.pianalyticsolutions.com/" />
         <meta
           name="description"
-          content="Pi Analytic Solutions delivers enterprise software, AI/ML systems, cloud infrastructure, and digital transformation for startups and global enterprises."
+          content="Pi Analytic Solutions helps startups, businesses, and government organizations build smart, secure, and scalable digital solutions. Custom Software Development, AI, ERP, BPM, Geo-Tagging, and Digital Transformation."
         />
-        <meta property="og:title" content="Pi Analytic Solutions — Enterprise IT Consulting" />
+        <meta property="og:title" content="Pi Analytic Solutions — Transforming Ideas into Smart Digital Solutions" />
         <meta
           property="og:description"
-          content="Transforming ideas into scalable solutions. End-to-end technology consulting from concept to deployment."
+          content="We build reliable, secure, and scalable digital solutions that improve productivity, simplify operations, and support long-term business growth."
         />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">
@@ -59,9 +62,12 @@ export default function HomePage() {
 
       <main id="main-content">
         <HeroSection />
+        <AboutSection />
         <ServicesSection />
-        <StatsSection />
         <WhyUsSection />
+        <ProcessSection />
+        <TrustedBySection />
+        <StatsSection />
       </main>
     </>
   );

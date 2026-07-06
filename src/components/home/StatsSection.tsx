@@ -3,10 +3,10 @@ import { useInView } from 'motion/react';
 import { useRef } from 'react';
 
 const stats = [
-  { label: 'Projects Delivered', number: '200+', prefix: '' },
-  { label: 'Enterprise Clients', number: '50+', prefix: '' },
-  { label: 'Years Experience', number: '8+', prefix: '' },
-  { label: 'Client Satisfaction', number: '98', unit: '%', prefix: '' },
+  { label: 'Projects Delivered', number: '50+', prefix: '' },
+  { label: 'Client Retention', number: '95', unit: '%', prefix: '' },
+  { label: 'Years Leadership Experience', number: '35+', prefix: '' },
+  { label: 'Founded', number: '2025', prefix: '' },
 ];
 
 function StatRow({ stat, index }: { stat: typeof stats[0]; index: number }) {
@@ -18,68 +18,23 @@ function StatRow({ stat, index }: { stat: typeof stats[0]; index: number }) {
       ref={ref}
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.32, 0.72, 0.24, 1] as const }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.32, 0.72, 0.24, 1] }}
       role="listitem"
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        padding: '32px 0',
-        borderBottom: index < stats.length - 1 ? '1px solid var(--hairline-subtle)' : 'none',
-        position: 'relative',
-      }}
+      className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-6 sm:py-8 gap-4 sm:gap-0 border-b border-[var(--hairline-subtle)]"
     >
-      <span
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '12px',
-          fontWeight: 500,
-          letterSpacing: 'var(--tracking-label)',
-          textTransform: 'uppercase',
-          color: 'var(--screen-tertiary)',
-          lineHeight: 1.4,
-          maxWidth: '160px',
-          paddingTop: '8px',
-          flexShrink: 0,
-        }}
-      >
+      <span className="font-body text-sm font-semibold uppercase tracking-wider text-[var(--screen-secondary)] max-w-xs">
         {stat.label}
       </span>
       <div
-        style={{
-          display: 'flex',
-          alignItems: 'baseline',
-          gap: '0.08em',
-          flexShrink: 0,
-          whiteSpace: 'nowrap',
-          alignSelf: 'flex-start',
-        }}
+        className="flex items-baseline gap-1"
         role="text"
         aria-label={`${stat.label}: ${stat.number}${stat.unit ?? ''}`}
       >
-        <span
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(64px, 11vw, 176px)',
-            fontWeight: 300,
-            letterSpacing: 'var(--tracking-display)',
-            lineHeight: 0.95,
-            color: 'var(--screen-primary)',
-          }}
-        >
+        <span className="font-display font-bold text-6xl md:text-7xl lg:text-8xl tracking-tight text-white">
           {stat.number}
         </span>
         {stat.unit && (
-          <span
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(56px, 9vw, 144px)',
-              fontWeight: 300,
-              letterSpacing: 'var(--tracking-display)',
-              lineHeight: 0.95,
-              color: 'var(--screen-secondary)',
-            }}
-          >
+          <span className="font-display font-bold text-5xl md:text-6xl text-[var(--screen-tertiary)]">
             {stat.unit}
           </span>
         )}
@@ -95,88 +50,32 @@ export default function StatsSection() {
   return (
     <section
       aria-label="Key achievements"
-      style={{
-        background: 'var(--void-900)',
-        position: 'relative',
-        overflow: 'hidden',
-        borderTop: '1px solid var(--hairline-subtle)',
-      }}
+      className="py-20 lg:py-28 px-6 md:px-12 border-t border-[var(--hairline-subtle)]"
+      style={{ background: 'var(--void-900)' }}
     >
-      <div
-        style={{
-          maxWidth: '1440px',
-          margin: '0 auto',
-          padding: '0 48px',
-          display: 'grid',
-          gridTemplateRows: 'auto repeat(4, 1fr)',
-          minHeight: '100vh',
-        }}
-        className="stats-inner"
-      >
-        {/* Headline row */}
+      <div ref={ref} className="max-w-[1440px] mx-auto">
+        {/* Section Header */}
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0.24, 1] as const }}
-          style={{
-            padding: '72px 0 48px',
-            borderBottom: '1px solid var(--hairline-subtle)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          }}
+          transition={{ duration: 0.6, ease: [0.32, 0.72, 0.24, 1] }}
+          className="mb-16 max-w-3xl"
         >
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: 'var(--tracking-label)',
-              textTransform: 'uppercase',
-              color: 'var(--amber-primary)',
-              marginBottom: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-            }}
-          >
-            <span style={{ display: 'inline-block', width: '20px', height: '1px', background: 'var(--amber-primary)', flexShrink: 0 }} />
-            By the Numbers
-          </p>
-          <h2
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(32px, 4.5vw, 72px)',
-              fontWeight: 300,
-              letterSpacing: 'var(--tracking-display)',
-              lineHeight: 1.05,
-              color: 'var(--screen-primary)',
-              maxWidth: '22ch',
-            }}
-          >
-            Delivering results that speak for themselves
+          <div className="kit-eyebrow kit-eyebrow--amber mb-6">
+            Our Accomplishments
+          </div>
+          <h2 className="font-section-heading text-white mb-6">
+            Our Achievements
           </h2>
         </motion.div>
 
-        {/* Stat rows */}
-        {stats.map((stat, i) => (
-          <StatRow key={stat.label} stat={stat} index={i} />
-        ))}
+        {/* Stats List */}
+        <div className="flex flex-col border-t border-[var(--hairline-subtle)]">
+          {stats.map((stat, i) => (
+            <StatRow key={stat.label} stat={stat} index={i} />
+          ))}
+        </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .stats-inner {
-            padding: 0 20px !important;
-            min-height: auto !important;
-            grid-template-rows: auto repeat(4, auto) !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .stats-inner { padding: 0 16px !important; }
-        }
-      `}</style>
     </section>
   );
 }

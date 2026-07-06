@@ -1,23 +1,5 @@
 import { Link } from 'react-router-dom';
 
-const contactLinks = [
-  {
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/company/pianalytic',
-    external: true,
-  },
-  {
-    label: '+91 95997 44898',
-    href: 'tel:+919599744898',
-    external: false,
-  },
-  {
-    label: 'IshanAgrawal@pianalyticsolutions.com',
-    href: 'mailto:IshanAgrawal@pianalyticsolutions.com',
-    external: false,
-  },
-];
-
 export default function Footer() {
   return (
     <footer
@@ -29,194 +11,158 @@ export default function Footer() {
         flexDirection: 'column',
       }}
     >
-      {/* Top band: logo left / contact links right */}
-      <div
-        className="footer-top-band"
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          padding: '48px 48px 0',
-          maxWidth: '1440px',
-          margin: '0 auto',
-          width: '100%',
-        }}
-      >
-        {/* Logo */}
-        <Link
-          to="/"
-          aria-label="Pi Analytic Solutions — home"
-          style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            textDecoration: 'none',
-            flexShrink: 0,
-          }}
-        >
-          <img
-            src="/assets/jii.jpeg"
-            alt="Pi Analytic Solutions"
-            style={{
-              height: '56px',
-              width: 'auto',
-              objectFit: 'contain',
-              objectPosition: 'left center',
-              flexShrink: 0,
-            }}
-          />
-        </Link>
-
-        {/* Contact links panel */}
-        <nav
-          aria-label="Contact and social links"
-          className="footer-contact-panel"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-end',
-            minWidth: '280px',
-          }}
-        >
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '11px',
-              fontWeight: 500,
-              letterSpacing: 'var(--tracking-label)',
-              textTransform: 'uppercase',
-              color: 'var(--screen-tertiary)',
-              marginBottom: '12px',
-            }}
-          >
-            Stay in touch
-          </p>
-          <ul
-            style={{
-              listStyle: 'none',
-              margin: 0,
-              padding: 0,
-              width: '100%',
-              borderTop: '1px solid var(--hairline-subtle)',
-            }}
-          >
-            {contactLinks.map((link) => (
-              <li
-                key={link.href}
-                style={{ borderBottom: '1px solid var(--hairline-subtle)' }}
-              >
-                {link.external ? (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: '24px',
-                      padding: '13px 0',
-                      textDecoration: 'none',
-                      color: 'var(--screen-secondary)',
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '14px',
-                      fontWeight: 400,
-                      lineHeight: 1,
-                      transition: 'color 200ms var(--ease-cinema)',
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--screen-primary)'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--screen-secondary)'; }}
-                  >
-                    <span>{link.label}</span>
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        fontSize: '13px',
-                        color: 'var(--screen-tertiary)',
-                        flexShrink: 0,
-                        transition: 'color 200ms var(--ease-cinema), transform 200ms var(--ease-cinema)',
-                        display: 'inline-block',
-                      }}
-                    >
-                      ↗
-                    </span>
-                  </a>
-                ) : (
-                  <a
-                    href={link.href}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: '24px',
-                      padding: '13px 0',
-                      textDecoration: 'none',
-                      color: 'var(--screen-secondary)',
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '14px',
-                      fontWeight: 400,
-                      lineHeight: 1,
-                      transition: 'color 200ms var(--ease-cinema)',
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--screen-primary)'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--screen-secondary)'; }}
-                  >
-                    <span>{link.label}</span>
-                    <span aria-hidden="true" style={{ fontSize: '13px', color: 'var(--screen-tertiary)' }}>↗</span>
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
-      {/* CTA section — oversized invitation */}
+      {/* CTA section — Section 8 specifications */}
       <div
         className="footer-cta-section"
         style={{
-          padding: '96px 48px 80px',
+          padding: '80px 48px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
           maxWidth: '1440px',
           margin: '0 auto',
           width: '100%',
+          borderBottom: '1px solid var(--hairline-subtle)',
         }}
       >
+        <div className="kit-eyebrow kit-eyebrow--amber mb-4">
+          Get Started
+        </div>
+        <h2
+          className="font-section-heading text-white mb-6"
+          style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 700 }}
+        >
+          Let's Build Something Great Together
+        </h2>
         <p
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '13px',
-            fontWeight: 400,
-            color: 'var(--screen-tertiary)',
-            marginBottom: '12px',
-            lineHeight: 1.5,
-          }}
+          className="font-body-text text-[var(--screen-secondary)] mb-8 max-w-3xl leading-relaxed"
+          style={{ fontSize: '18px' }}
         >
-          Let's build something great together
+          Whether you're a startup, a growing business, or a government organization, Pi Analytic Solutions is ready to turn your ideas into reliable digital solutions. Let's work together to build technology that supports your business goals.
         </p>
-        <Link
-          to="/contact"
-          aria-label="Ready to build something great — open contact form"
-          style={{ textDecoration: 'none', display: 'block' }}
-        >
-          <h2
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(64px, 9vw, 144px)',
-              fontWeight: 300,
-              letterSpacing: 'var(--tracking-display)',
-              lineHeight: 0.95,
-              color: 'var(--screen-primary)',
-              transition: 'color 400ms var(--ease-cinema)',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--amber-primary)'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--screen-primary)'; }}
+        <div className="flex flex-wrap gap-4 items-center">
+          <Link
+            to="/contact"
+            className="font-btn-text inline-flex items-center justify-center bg-[var(--amber-primary)] text-[var(--void-900)] px-6 py-3.5 border border-[var(--amber-primary)] transition-all duration-300 hover:bg-transparent hover:text-white"
           >
-            Ready to build<br />something great?
-          </h2>
-        </Link>
+            Contact Us Today
+          </Link>
+          <Link
+            to="/contact"
+            className="font-btn-text inline-flex items-center justify-center bg-transparent text-white px-6 py-3.5 border border-white transition-all duration-300 hover:bg-white hover:text-[var(--void-900)]"
+          >
+            Schedule a Consultation
+          </Link>
+        </div>
+      </div>
+
+      <div
+        className="footer-directory"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '48px',
+          padding: '64px 48px',
+          maxWidth: '1440px',
+          margin: '0 auto',
+          width: '100%',
+        }}
+      >
+        {/* Col 1: Logo & Info */}
+        <div className="flex flex-col items-start gap-4">
+          <Link to="/" aria-label="Pi Analytic Solutions — home">
+            <img
+              src="/assets/jii.jpeg"
+              alt="Pi Analytic Solutions"
+              style={{
+                height: '48px',
+                width: 'auto',
+                objectFit: 'contain',
+              }}
+            />
+          </Link>
+          <p className="font-body text-sm text-[var(--screen-secondary)] mt-2">
+            Building smart, secure, and scalable digital solutions for startups, businesses, and government organizations.
+          </p>
+          <p className="font-body text-xs text-[var(--screen-tertiary)] mt-2">
+            📍 Aligarh, Uttar Pradesh, India
+          </p>
+        </div>
+
+        {/* Col 2: Quick Links */}
+        <div>
+          <h3 className="font-body text-xs font-semibold uppercase tracking-wider text-[var(--screen-tertiary)] mb-4">
+            Quick Links
+          </h3>
+          <ul className="flex flex-col gap-3 list-none p-0 m-0">
+            <li>
+              <Link
+                to="/"
+                className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <a
+                href="#services"
+                className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
+              >
+                Services
+              </a>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
+              >
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className="font-body text-sm text-[var(--screen-secondary)] hover:text-[var(--amber-primary)] transition-colors duration-200 no-underline"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Col 3: Contact Information */}
+        <div>
+          <h3 className="font-body text-xs font-semibold uppercase tracking-wider text-[var(--screen-tertiary)] mb-4">
+            Contact Information
+          </h3>
+          <ul className="flex flex-col gap-3 list-none p-0 m-0">
+            <li className="font-body text-sm text-[var(--screen-secondary)]">
+              📞 <a href="tel:+919599744898" className="text-inherit no-underline hover:text-[var(--amber-primary)] transition-colors duration-200">+91 95997 44898</a>
+            </li>
+            <li className="font-body text-sm text-[var(--screen-secondary)] break-all">
+              📧 <a href="mailto:IshanAgrawal@pianalyticsolutions.com" className="text-inherit no-underline hover:text-[var(--amber-primary)] transition-colors duration-200">IshanAgrawal@pianalyticsolutions.com</a>
+            </li>
+            <li className="font-body text-sm text-[var(--screen-secondary)] mt-2">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-[var(--screen-tertiary)] mb-2">Follow Us</span>
+              <a
+                href="https://linkedin.com/company/pianalytic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-inherit no-underline hover:text-[var(--amber-primary)] transition-colors duration-200"
+              >
+                LinkedIn <span className="text-[10px]">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       {/* Bottom strip */}
@@ -224,89 +170,36 @@ export default function Footer() {
         style={{
           borderTop: '1px solid var(--hairline-subtle)',
           padding: '0 48px',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
+          display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          minHeight: '52px',
+          minHeight: '64px',
           maxWidth: '1440px',
           margin: '0 auto',
           width: '100%',
         }}
-        className="footer-bottom-strip"
+        className="footer-bottom-strip flex-wrap gap-4 py-4 lg:py-0"
       >
-        <span
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '12px',
-            fontWeight: 400,
-            color: 'var(--screen-tertiary)',
-            padding: '14px 0',
-          }}
-        >
+        <span className="font-body text-xs text-[var(--screen-tertiary)]">
           © 2026 Pi Analytic Solutions Pvt Ltd
         </span>
-        <span
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '12px',
-            fontWeight: 400,
-            color: 'var(--screen-tertiary)',
-            padding: '14px 0',
-          }}
-        >
-          <Link
-            to="/contact"
-            style={{
-              color: 'var(--screen-tertiary)',
-              textDecoration: 'none',
-              transition: 'color 200ms var(--ease-cinema)',
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--screen-secondary)'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--screen-tertiary)'; }}
-          >
-            Privacy Policy
-          </Link>
-        </span>
-        <span
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '12px',
-            fontWeight: 400,
-            color: 'var(--screen-tertiary)',
-            padding: '14px 0 14px 24px',
-            borderLeft: '1px solid var(--hairline-subtle)',
-            textAlign: 'right',
-          }}
-        >
+        <span className="font-body text-xs text-[var(--screen-tertiary)]">
           All rights reserved
         </span>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .footer-top-band {
-            flex-direction: column !important;
-            gap: 40px !important;
-            padding: 40px 24px 0 !important;
-          }
-          .footer-contact-panel {
-            align-items: flex-start !important;
-            width: 100% !important;
-            min-width: 0 !important;
-          }
           .footer-cta-section {
-            padding: 56px 24px 48px !important;
+            padding: 56px 24px !important;
+          }
+          .footer-directory {
+            padding: 48px 24px !important;
+            gap: 36px !important;
           }
           .footer-bottom-strip {
-            grid-template-columns: 1fr 1fr !important;
-            grid-template-rows: auto auto !important;
-            padding: 0 24px !important;
+            padding: 16px 24px !important;
           }
-        }
-        @media (max-width: 480px) {
-          .footer-top-band { padding: 32px 20px 0 !important; }
-          .footer-cta-section { padding: 48px 20px 40px !important; }
-          .footer-bottom-strip { padding: 0 20px !important; }
         }
       `}</style>
     </footer>

@@ -4,275 +4,117 @@ import { useInView } from 'motion/react';
 import { useRef } from 'react';
 
 const services = [
-  { name: 'Software Development', desc: 'Custom enterprise applications built for scale' },
-  { name: 'AI / ML Solutions', desc: 'Intelligent systems that learn and adapt' },
-  { name: 'Web Development', desc: 'High-performance web platforms and portals' },
-  { name: 'Mobile App Development', desc: 'Native and cross-platform mobile experiences' },
-  { name: 'Data Analytics', desc: 'Insights-driven decision making at every level' },
-  { name: 'Cloud Solutions', desc: 'Scalable cloud architecture and migration' },
-  { name: 'IT Consulting + Project Management', desc: 'Strategic guidance from concept to delivery' },
+  {
+    num: '01',
+    title: 'Custom Software Development',
+    desc: 'We build customized software solutions that match your business requirements and improve operational efficiency.',
+  },
+  {
+    num: '02',
+    title: 'Website Development',
+    desc: 'We design modern, responsive, and user-friendly websites that create a strong online presence for your business.',
+  },
+  {
+    num: '03',
+    title: 'Mobile Application Development',
+    desc: 'We develop secure and high-performance Android and iOS applications with a smooth user experience.',
+  },
+  {
+    num: '04',
+    title: 'AI & Machine Learning',
+    desc: 'We create intelligent solutions that automate processes and help businesses make better decisions.',
+  },
+  {
+    num: '05',
+    title: 'ERP Solutions',
+    desc: 'Manage finance, HR, inventory, sales, and business operations from one integrated platform.',
+  },
+  {
+    num: '06',
+    title: 'BPM Solutions',
+    desc: 'Improve workflow, increase productivity, and automate business processes efficiently.',
+  },
 ];
 
-function ServiceRow({ service, index }: { service: typeof services[0]; index: number }) {
-  const ref = useRef<HTMLLIElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-
-  return (
-    <motion.li
-      ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.07, ease: [0.32, 0.72, 0.24, 1] as const }}
-    >
-      <Link
-        to="/contact"
-        aria-label={`${service.name} — enquire`}
-        className="svc-row-link"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '16px',
-          padding: '22px 20px',
-          borderBottom: '1px solid var(--hairline-subtle)',
-          textDecoration: 'none',
-          color: 'inherit',
-          transition: 'background-color 200ms var(--ease-cinema)',
-        }}
-        onMouseEnter={(e) => {
-          const el = e.currentTarget as HTMLElement;
-          el.style.backgroundColor = 'var(--void-800)';
-          const name = el.querySelector('.svc-name') as HTMLElement;
-          const arrow = el.querySelector('.svc-arrow') as HTMLElement;
-          if (name) name.style.color = 'var(--screen-primary)';
-          if (arrow) { arrow.style.color = 'var(--amber-primary)'; arrow.style.transform = 'translate(3px, -3px)'; }
-        }}
-        onMouseLeave={(e) => {
-          const el = e.currentTarget as HTMLElement;
-          el.style.backgroundColor = 'transparent';
-          const name = el.querySelector('.svc-name') as HTMLElement;
-          const arrow = el.querySelector('.svc-arrow') as HTMLElement;
-          if (name) name.style.color = 'var(--screen-secondary)';
-          if (arrow) { arrow.style.color = 'var(--screen-tertiary)'; arrow.style.transform = 'none'; }
-        }}
-      >
-        <span
-          className="svc-name"
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(18px, 2.2vw, 32px)',
-            fontWeight: 300,
-            letterSpacing: 'var(--tracking-display)',
-            lineHeight: 1.1,
-            color: 'var(--screen-secondary)',
-            transition: 'color 200ms var(--ease-cinema)',
-          }}
-        >
-          {service.name}
-        </span>
-        <span
-          className="svc-arrow"
-          aria-hidden="true"
-          style={{
-            fontSize: '20px',
-            lineHeight: 1,
-            color: 'var(--screen-tertiary)',
-            flexShrink: 0,
-            transition: 'color 200ms var(--ease-cinema), transform 200ms var(--ease-cinema)',
-            display: 'inline-block',
-            marginTop: '-2px',
-          }}
-        >
-          ↗
-        </span>
-      </Link>
-    </motion.li>
-  );
-}
-
 export default function ServicesSection() {
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const headlineInView = useInView(headlineRef, { once: true, margin: '-80px' });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
     <section
-      aria-label="Our services"
-      style={{
-        background: 'var(--void-900)',
-        display: 'grid',
-        gridTemplateColumns: '5fr 7fr',
-        padding: '100px 0 120px',
-      }}
-      className="services-section"
+      id="services"
+      aria-label="Our Services"
+      className="border-t border-[var(--hairline-subtle)] py-20 lg:py-28 px-6 md:px-12"
+      style={{ background: 'var(--void-900)' }}
     >
-      {/* LEFT: Editorial column */}
-      <div
-        style={{
-          paddingLeft: '48px',
-          paddingRight: '0',
-          display: 'grid',
-          gridTemplateRows: 'auto 1fr',
-          alignContent: 'start',
-        }}
-        className="services-left"
-      >
-        {/* Headline row */}
+      <div ref={sectionRef} className="max-w-[1440px] mx-auto">
+        {/* Header Block */}
         <motion.div
-          ref={headlineRef}
           initial={{ opacity: 0, y: 24 }}
-          animate={headlineInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0.24, 1] as const }}
-          style={{ paddingBottom: 0, paddingRight: '48px' }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.32, 0.72, 0.24, 1] }}
+          className="mb-16 max-w-3xl"
         >
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: 'var(--tracking-label)',
-              textTransform: 'uppercase',
-              color: 'var(--amber-primary)',
-              marginBottom: '24px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-            }}
-          >
-            <span style={{ display: 'inline-block', width: '20px', height: '1px', background: 'var(--amber-primary)', flexShrink: 0 }} />
-            What We Do
-          </p>
-          <h2
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(40px, 5.5vw, 88px)',
-              fontWeight: 300,
-              letterSpacing: 'var(--tracking-display)',
-              lineHeight: 0.95,
-              color: 'var(--screen-primary)',
-            }}
-          >
-            Our<br />Services
+          <div className="kit-eyebrow kit-eyebrow--amber mb-6">
+            What We Offer
+          </div>
+          <h2 className="font-section-heading text-white mb-6">
+            Our Services
           </h2>
+          <p className="font-body-text text-[var(--screen-secondary)] leading-relaxed">
+            We provide complete technology solutions designed to help businesses innovate, grow, and succeed in today's digital world.
+          </p>
         </motion.div>
 
-        {/* Body copy — inset ~33% */}
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, i) => (
+            <motion.div
+              key={service.num}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.32, 0.72, 0.24, 1] }}
+              className="p-8 border border-[var(--hairline-subtle)] bg-[var(--void-800)] hover:border-[var(--amber-primary)] transition-all duration-300 flex flex-col justify-between group h-full"
+            >
+              <div>
+                <span className="font-mono text-xs text-[var(--amber-primary)] block mb-6 tracking-widest">
+                  SERVICE // {service.num}
+                </span>
+                <h3 className="font-service-heading text-white mb-4 transition-colors duration-300 group-hover:text-[var(--amber-primary)]">
+                  {service.title}
+                </h3>
+                <p className="font-body-text text-[var(--screen-secondary)] mb-8 leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+
+              <div>
+                <Link
+                  to="/contact"
+                  className="font-btn-text inline-flex items-center gap-2 text-white group-hover:text-[var(--amber-primary)] transition-colors duration-300"
+                >
+                  Enquire Now <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">↗</span>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={headlineInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.32, 0.72, 0.24, 1] as const }}
-          style={{
-            paddingLeft: '33%',
-            paddingRight: '48px',
-            paddingTop: '56px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            gap: '32px',
-          }}
-          className="services-body-block"
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5, ease: [0.32, 0.72, 0.24, 1] }}
+          className="mt-16 text-center"
         >
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '16px',
-              fontWeight: 400,
-              lineHeight: 1.5,
-              color: 'var(--screen-secondary)',
-              maxWidth: '52ch',
-            }}
-          >
-            From AI-powered platforms to cloud infrastructure — we cover the full technology stack so you can focus on what matters most.
-          </p>
           <Link
-            to="/contact"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              fontFamily: 'var(--font-body)',
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: 'var(--tracking-label)',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              color: 'var(--screen-secondary)',
-              borderBottom: '1px solid var(--hairline-subtle)',
-              paddingBottom: '3px',
-              transition: 'color 200ms var(--ease-cinema), border-color 200ms var(--ease-cinema)',
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.color = 'var(--amber-primary)';
-              el.style.borderColor = 'var(--amber-primary)';
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLElement;
-              el.style.color = 'var(--screen-secondary)';
-              el.style.borderColor = 'var(--hairline-subtle)';
-            }}
+            to="/about"
+            className="font-btn-text inline-flex items-center justify-center bg-[var(--amber-primary)] text-[var(--void-900)] px-8 py-4 border border-[var(--amber-primary)] transition-all duration-300 hover:bg-transparent hover:text-white"
           >
-            Get in touch →
+            View All Services
           </Link>
         </motion.div>
       </div>
-
-      {/* RIGHT: Service ledger */}
-      <div
-        style={{
-          borderLeft: '1px solid var(--hairline-subtle)',
-          paddingTop: 'clamp(160px, 18vw, 280px)',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-        className="services-right"
-      >
-        <ul
-          style={{
-            listStyle: 'none',
-            margin: 0,
-            padding: 0,
-            borderTop: '1px solid var(--hairline-subtle)',
-            width: '100%',
-          }}
-          aria-label="Service offerings"
-        >
-          {services.map((service, i) => (
-            <ServiceRow key={service.name} service={service} index={i} />
-          ))}
-        </ul>
-      </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .services-section {
-            grid-template-columns: 1fr !important;
-            padding: 48px 0 64px !important;
-          }
-          .services-left {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-          }
-          .services-body-block {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            padding-top: 32px !important;
-          }
-          .services-right {
-            border-left: none !important;
-            border-top: 1px solid var(--hairline-strong) !important;
-            padding-top: 0 !important;
-            margin-top: 48px !important;
-          }
-          .svc-row-link {
-            padding: 18px 20px !important;
-          }
-        }
-        @media (min-width: 769px) {
-          .svc-row-link {
-            padding: 28px 48px 28px 40px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

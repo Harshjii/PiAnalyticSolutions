@@ -5,163 +5,79 @@ export default function HeroSection() {
   return (
     <section
       aria-label="Pi Analytic Solutions — hero"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr',
-        minHeight: 'calc(100vh - 64px)',
-        padding: '0 48px',
-      }}
+      className="relative min-h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center px-6 md:px-12 py-12 lg:py-0 overflow-hidden"
+      style={{ background: 'var(--void-900)' }}
     >
-      {/* LEFT: Text column */}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '64px 56px 64px 48px',
-        }}
-        className="hero-text-col"
-      >
-        {/* Zone A: Eyebrow + Headline */}
+      {/* Left Column: Copy */}
+      <div className="lg:col-span-7 flex flex-col justify-center h-full z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.32, 0.72, 0.24, 1] }}
-          style={{ flexShrink: 0 }}
         >
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: 'var(--tracking-label)',
-              textTransform: 'uppercase',
-              color: 'var(--screen-tertiary)',
-              marginBottom: '24px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-            }}
-          >
-            <span
-              style={{
-                display: 'inline-block',
-                width: '16px',
-                height: '1px',
-                background: 'var(--amber-primary)',
-                flexShrink: 0,
-              }}
-            />
-            Enterprise IT Consulting
-          </p>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(48px, 6.5vw, 104px)',
-              fontWeight: 300,
-              letterSpacing: 'var(--tracking-display)',
-              lineHeight: 0.95,
-              color: 'var(--screen-primary)',
-            }}
-          >
-            Transforming<br />Ideas Into<br />Scalable<br />Solutions
+          <div className="kit-eyebrow kit-eyebrow--amber mb-6">
+            Pi Analytic Solutions
+          </div>
+          <h1 className="font-hero-heading text-white mb-6">
+            Transforming Ideas into<br />Smart Digital Solutions
           </h1>
         </motion.div>
 
-        {/* Zone B: Structural void */}
-        <div style={{ flex: 1, minHeight: '80px' }} role="presentation" aria-hidden="true" />
-
-        {/* Zone C: Body + CTA */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.32, 0.72, 0.24, 1] }}
-          style={{
-            flexShrink: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.32, 0.72, 0.24, 1] }}
+          className="border-t border-[var(--hairline-subtle)] pt-6"
         >
-          <div
-            style={{
-              width: '100%',
-              height: '1px',
-              background: 'var(--hairline-subtle)',
-              marginBottom: '32px',
-            }}
-            role="presentation"
-            aria-hidden="true"
-          />
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '16px',
-              fontWeight: 400,
-              lineHeight: 1.5,
-              color: 'var(--screen-secondary)',
-              maxWidth: '52ch',
-              marginBottom: '16px',
-            }}
-          >
-            Pi Analytic Solutions builds enterprise-grade software, AI/ML systems, and digital infrastructure for startups and global enterprises.
+          <p className="font-body-text text-[var(--screen-secondary)] mb-8 max-w-xl">
+            Pi Analytic Solutions helps startups, businesses, and government organizations build smart, secure, and scalable digital solutions. We specialize in Custom Software Development, Website Development, Mobile Applications, ERP, BPM, AI Solutions, Cloud Services, Geo-Tagging, Accounting Solutions, and Digital Transformation.
           </p>
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '16px',
-              fontWeight: 400,
-              lineHeight: 1.5,
-              color: 'var(--screen-secondary)',
-              maxWidth: '52ch',
-            }}
-          >
-            From concept to deployment — we deliver end-to-end technology solutions that scale with your ambition.
-          </p>
-          <Link
-            to="/contact"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              fontFamily: 'var(--font-body)',
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: 'var(--tracking-label)',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              background: 'var(--amber-primary)',
-              color: 'var(--void-900)',
-              border: '1px solid var(--amber-primary)',
-              padding: '14px 32px',
-              borderRadius: '0px',
-              marginTop: '32px',
-              alignSelf: 'flex-start',
-              transition: 'opacity 200ms var(--ease-cinema)',
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.85'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
-          >
-            Book a Consultation
-          </Link>
+
+          <div className="flex flex-wrap gap-4 items-center">
+            <Link
+              to="/contact"
+              className="font-btn-text inline-flex items-center justify-center bg-[var(--amber-primary)] text-[var(--void-900)] px-6 py-3.5 border border-[var(--amber-primary)] transition-all duration-300 hover:bg-transparent hover:text-white"
+            >
+              Book a Free Consultation
+            </Link>
+            <a
+              href="#services"
+              className="font-btn-text inline-flex items-center justify-center bg-transparent text-white px-6 py-3.5 border border-white transition-all duration-300 hover:bg-white hover:text-[var(--void-900)]"
+            >
+              Explore Our Services
+            </a>
+          </div>
         </motion.div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          section[aria-label="Pi Analytic Solutions — hero"] {
-            padding: 0 24px !important;
-          }
-          .hero-text-col {
-            padding: 48px 24px 56px !important;
-          }
-        }
-        @media (max-width: 600px) {
-          .hero-text-col { padding: 40px 20px 48px !important; }
-          section[aria-label="Pi Analytic Solutions — hero"] {
-            padding: 0 20px !important;
-          }
-        }
-      `}</style>
+      {/* Right Column: High-tech visual */}
+      <div className="lg:col-span-5 w-full h-[350px] lg:h-[80%] relative z-10 flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: [0.32, 0.72, 0.24, 1] }}
+          className="relative w-full h-full border border-[var(--hairline-subtle)] overflow-hidden group"
+        >
+          {/* Subtle background glow */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-[rgba(212,160,23,0.05)] to-transparent pointer-events-none" />
+          
+          <img
+            src="/assets/hero_office_tech.png"
+            alt="Modern Office with software developers discussing projects"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+
+          {/* Decorative tech grid details */}
+          <div className="absolute top-4 left-4 flex gap-1">
+            <span className="w-1.5 h-1.5 bg-[var(--amber-primary)]" />
+            <span className="w-1.5 h-1.5 bg-[var(--screen-tertiary)]" />
+            <span className="w-1.5 h-1.5 bg-[var(--screen-tertiary)]" />
+          </div>
+          <div className="absolute bottom-4 right-4 text-[10px] font-mono text-[var(--screen-tertiary)] tracking-wider">
+            SYSTEM_ACTIVE // 2026
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
