@@ -5,6 +5,7 @@ import { ScrollRestoration } from 'react-router-dom';
 import Footer from '@/layouts/parts/Footer';
 import Header from '@/layouts/parts/Header';
 import Website from '@/layouts/Website';
+import ProjectPromoModal from '@/components/ProjectPromoModal';
 
 /**
  * Root layout component that wraps all pages with consistent header and footer.
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <Header />
       {children}
       <Footer />
+      <ProjectPromoModal />
     </Website>
   );
 }
