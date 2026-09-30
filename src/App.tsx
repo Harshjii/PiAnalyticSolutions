@@ -12,6 +12,8 @@ import RootLayout from './layouts/RootLayout';
 import Spinner from './components/Spinner';
 import { routes } from './routes';
 
+import ProjectPromoModal from '@/components/ProjectPromoModal';
+
 const CookieBanner = lazy(() =>
   import('@/components/CookieBanner').catch((error) => {
     console.warn('Failed to load CookieBanner:', error);
@@ -56,6 +58,7 @@ export default function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <ProjectPromoModal />
       {/*
         CookieBanner reads document.cookie and subscribes to browser events.
         App.tsx is client-only (entry-server.tsx renders the route tree
